@@ -31,5 +31,5 @@ ENV PATH="/opt/venv/bin:$PATH"
 #HEALTHCHECK CMD ["python", "./healthcheck.py"]
 
 # Copy script over and run
-COPY watcher test-OG.py.
-CMD [ "python", "./watcher test-OG.py" ]
+COPY watcher.py.
+CMD [ "python", "./watcher.py" ]
