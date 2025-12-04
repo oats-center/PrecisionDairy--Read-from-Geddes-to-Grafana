@@ -1,5 +1,5 @@
 # BUILDER
-FROM python:3.14.0-slim-bookworm as builder
+FROM python:3.12.12
 LABEL org.opencontainers.image.source="https://github.com/oats-center/ASREC"
 WORKDIR /usr/src/app
 
