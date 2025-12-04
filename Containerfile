@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt
 
 
 # RUNTIME
-FROM python:3.14.0-slim-bookworm as runtime
+FROM python:3.12.12
 
 WORKDIR /usr/src/app
 
