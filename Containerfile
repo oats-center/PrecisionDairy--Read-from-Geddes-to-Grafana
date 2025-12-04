@@ -12,7 +12,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy requirements and build with pip
 COPY ./requirements.txt /app/requirements.txt
-RUN pip install -Ur requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 
 # RUNTIME
