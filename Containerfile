@@ -1,5 +1,5 @@
 # BUILDER
-FROM python:3.12.12
+FROM python:3.9-slim as compiler
 LABEL org.opencontainers.image.source="https://github.com/oats-center/ASREC"
 WORKDIR /usr/src/app
 
@@ -16,19 +16,16 @@ RUN pip install -r requirements.txt
 
 
 # RUNTIME
-FROM python:3.12.12
-
+FROM python:3.9-slim as runner
 WORKDIR /usr/src/app
 
 # Copy compiled venv from builder
-COPY --from=builder /opt/venv /opt/venv
+COPY --from=compiler /opt/venv /opt/venv
 
 # Make sure we use the virtualenv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Copy health check script
-#COPY healthcheck.py .
-#HEALTHCHECK CMD ["python", "./healthcheck.py"]
+
 
 # Copy script over and run
 COPY watcher.py .
