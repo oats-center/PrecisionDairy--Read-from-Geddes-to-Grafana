@@ -1,8 +1,7 @@
 # BUILDER
  # FROM sets the Docker image that is a a standalone, executable file used to create a container. It changes depending on the type of app (python, ubuntu, php, etc)
    # Look for the images here : https://hub.docker.com/
-   
- # LABEL 
+ # LABEL tells GitHub where the source is located
  # WORKDIR defines a virtual environment to work
 FROM python:3.14.0-slim-bookworm as builder
 LABEL org.opencontainers.image.source="https://github.com/oats-center/ASREC"
