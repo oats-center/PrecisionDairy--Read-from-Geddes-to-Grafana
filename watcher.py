@@ -70,7 +70,8 @@ def ConfInts(dfi):
     dfi['ci_lower']= dfi['avg_daily_yield']-moe
     dfi['ci_upper']= dfi['avg_daily_yield']+moe
     return dfi
-
+    
+"""
 def LineGrph_CI(to_plot):
     ADdf= to_plot
     ADdf = ADdf[ADdf['group'].isin([1, 2, 3, 4, 5])]
@@ -86,7 +87,7 @@ def LineGrph_CI(to_plot):
                         sub.loc[ok, 'ci_lower'],
                         sub.loc[ok, 'ci_upper'],
                         alpha=0.4)
-    
+   
     ax.set_title('Daily Mean Yield with 80% t-Confidence Intervals by Group')
     ax.set_xlabel('Date'); ax.set_ylabel('Mean Daily Yield')
     ax.legend(title='Group'); ax.grid(alpha=0.3)
@@ -99,7 +100,7 @@ def LineGrph_CI(to_plot):
     plt.show()
     return fig
 
-
+"""
 def process_and_plot(folder_path):
     """Read all files and create plot"""
     # Call your existing function to get the dataframe
@@ -109,14 +110,15 @@ def process_and_plot(folder_path):
     # Or if you have another function to read and process data:
    
     df_ci=ConfInts(df)
-    fig = LineGrph_CI(df_ci)
+    df_ci.to_csv('data.csv', index=False)
+    #fig = LineGrph_CI(df_ci)
     
-    print(f"Files processed: {len(df)}")
-    print(df.head())
+    #print(f"Files processed: {len(df)}")
+    #print(df.head())
     # Add your plotting here
 
 def monitor_folder_polling(folder_path, interval=30):
-    #intervañ in seconds
+    #intervaL in seconds
     """Monitors a folder and updates plot when new files arrive."""
     initial_files = set(os.listdir(folder_path))
     print(f"Initial files: {len(initial_files)}")
@@ -143,7 +145,7 @@ def monitor_folder_polling(folder_path, interval=30):
 
 # Run it
 # this folder is a trial folder where I upload the files manually.
-folder_to_watch = "csv files"
+folder_to_watch = "/data"
 monitor_folder_polling(folder_to_watch, interval=30)
 
 
