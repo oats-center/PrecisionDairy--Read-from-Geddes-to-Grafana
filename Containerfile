@@ -34,4 +34,4 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Copy the script that has the app we want to execute
 # CMD allows to run  what we ant to execute, the first parameter is the 
 COPY watcher.py .
-CMD [ "python", "./watcher.py" ]
+CMD [ "python", "./run_all.py" ]
