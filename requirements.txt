@@ -1,5 +1,14 @@
-scipy==1.16.3
-pandas==2.3.3
-matplotlib==3.10.7
-numpy==2.3.3
-IPython==9.5
+# Core data processing for Chapters 3 and 4
+pandas>=2.2,<3
+numpy>=1.26,<3
+scipy>=1.11,<2
+pyarrow>=15,<22
+openpyxl>=3.1,<4
+
+# Optional plotting / interactive support kept from the existing container repo
+matplotlib>=3.8,<4
+IPython>=8.18,<10
+
+# PostgreSQL loading for generated Chapter 3 and Chapter 4 output tables
+SQLAlchemy>=2.0,<3
+psycopg2-binary>=2.9,<3
