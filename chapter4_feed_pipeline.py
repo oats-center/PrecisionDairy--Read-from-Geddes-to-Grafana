@@ -414,14 +414,16 @@ def standardize_ingredient_code(value: Any, extra_mapping: Optional[Mapping[str,
     if compact in DEFAULT_CODE_ALIASES:
         return DEFAULT_CODE_ALIASES[compact]
 
-    first_three = compact[:3]
-    if first_three in DEFAULT_CODE_ALIASES:
-        return DEFAULT_CODE_ALIASES[first_three]
-
+    # Phrase rules must run before the first-three-character rule; otherwise
+    # "SOYBEAN MEAL" would become SOY (soy hulls) instead of SBM.
     for phrase, code in DEFAULT_INGREDIENT_CODE_RULES:
         phrase_compact = re.sub(r"[^A-Z0-9]", "", phrase)
         if phrase in text_upper or phrase_compact in compact:
             return code
+
+    first_three = compact[:3]
+    if first_three in DEFAULT_CODE_ALIASES:
+        return DEFAULT_CODE_ALIASES[first_three]
 
     return first_three if first_three else None
 
